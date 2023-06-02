@@ -1,0 +1,14 @@
+name: preview_on_pr_update
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  preview:
+    if: github.event.pull_request.state == 'open'
+    concurrency:
+      cancel-in-progress: true
+    with:
+      analyze_base: main
+      checks: "['npm:lint']"
