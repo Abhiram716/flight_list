@@ -1,0 +1,12 @@
+name: production_on_push
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  production:
+    concurrency:
+      cancel-in-progress: true
+    with:
+      checks: "['npm:lint', 'compose:test', 'compose:e2e']"
