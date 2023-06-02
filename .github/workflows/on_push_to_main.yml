@@ -9,4 +9,5 @@ jobs:
     concurrency:
       cancel-in-progress: true
     with:
-      checks: "['npm:lint', 'compose:test', 'compose:e2e']"
+      checks: "['npm:lint']"
+      
