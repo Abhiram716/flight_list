@@ -12,3 +12,4 @@ jobs:
     with:
       analyze_base: main
       checks: "['npm:lint']"
+      
