@@ -11,9 +11,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app/backend
+#     defaults:
+#       run:
+#         working-directory: app/backend
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -27,9 +27,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./app/back-end/package-lock.json 
-    - run: pwd
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
-    - run: npm lint
-    
+    - run: |
+        pwd
+        cd app/back-end
+        pwd
+        npm install
+        npm run build --if-present
+        npm test
+        npm lint
+        
