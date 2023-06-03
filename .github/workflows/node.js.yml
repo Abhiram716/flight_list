@@ -27,11 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./app/back-end/package-lock.json 
-    - run: |
-        pwd
+    - run: | 
         cd app/back-end
-        pwd
-    - run: npm install
+        npm install
     - run: npm run build --if-present
     - run: npm test
     - run: npm lint
