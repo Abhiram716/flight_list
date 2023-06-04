@@ -29,6 +29,13 @@ jobs:
         npm ci
         cd ../front-end
         npm ci
+    
+    - name: Lint back-end
+      run: cd app/back-end && npm run lint
+
+    - name: Lint front-end
+      run: cd app/front-end && npm run lint
+
     - name: Build and test back-end
       run: cd app/back-end && npm run build && npm test
 
