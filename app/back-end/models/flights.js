@@ -1,30 +1,30 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const flightSchema = new mongoose.Schema({
   source: {
     type: String,
-    required: true
+    required: true,
   },
   destination: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    required: true
+    required: true,
   },
-  flights: [
+  flightsList: [
     {
       company: {
         type: String,
-        required: true
+        required: true,
       },
       price: {
         type: String,
-        required: true
-      }
-    }
-  ]
-})
+        required: true,
+      },
+    },
+  ],
+});
 
-export default mongoose.model('Flights', flightSchema)
+export default mongoose.model('Flights', flightSchema);
