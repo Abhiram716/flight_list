@@ -23,8 +23,8 @@ const createFlightsList = async (req, res) => {
 
       for (let j = 0; j < numOfSubFlights; j += 1) {
         const subFlight = {
-          company: faker.company.name(),
-          price: faker.commerce.price({ min: 1000, max: 10000 }),
+          company: faker.airline.airline().name,
+          price: `₹${faker.commerce.price({ min: 1000, max: 10000 })}`,
         };
 
         console.log('--------company:price');
