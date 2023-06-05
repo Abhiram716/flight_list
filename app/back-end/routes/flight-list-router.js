@@ -1,16 +1,16 @@
-import express from 'express';
+import express from 'express'
 import {
   getFlights,
   createFlightsList,
-  deleteFlightLists,
-} from '../controllers/flight-list-controller.js';
+  deleteFlightLists
+} from '../controllers/flight-list-controller.js'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/', getFlights);
+router.get('/', getFlights)
 
-router.get('/createFlightsList', createFlightsList);
+router.get('/createFlightsList', createFlightsList)
 
-router.get('/deleteFlightLists', deleteFlightLists);
+router.get('/deleteFlightLists', deleteFlightLists)
 
-export default router;
+export default router
