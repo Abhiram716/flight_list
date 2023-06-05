@@ -15,7 +15,7 @@ const getFlights = async (req, res) => {
     Tempflight.forEach((flight) => {
       flight.flightsList.forEach(({ company, price }) => {
         flightData[company] = price;
-      });;
+      });
     });
 
     res.status(200).json(flightData);
@@ -23,9 +23,17 @@ const getFlights = async (req, res) => {
     console.error('Error fetching flights:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-  
 };
 
+const createFlightDetails = async(req, res) => {
+  try {
+    const newFlightDetails = new flights(req.body);
+    await newFlightDetails.save();
+     res.status(201).json({ message: 'Data created successfully' });
+  } catch (error) {
+    console.error('Error fetching flights:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
-
-export { getFlights };
+export { getFlights, createFlightDetails };
