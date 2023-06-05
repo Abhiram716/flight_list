@@ -6,7 +6,7 @@ const getFlights = (req, res) => {};
 
 const createFlightsList = async (req, res) => {
   try {
-    const flightsList = [];
+    const flightsDetails = [];
 
     for (let i = 0; i < 20; i += 1) {
       const flight = {
@@ -16,7 +16,7 @@ const createFlightsList = async (req, res) => {
           from: '2024-01-01T00:00:00.000Z',
           to: '2024-05-01T00:00:00.000Z',
         }),
-        flights: [],
+        flightsList: [],
       };
 
       const numOfSubFlights = faker.number.int({ min: 1, max: 5 });
@@ -29,14 +29,14 @@ const createFlightsList = async (req, res) => {
 
         console.log('--------company:price');
         console.log(subFlight);
-        flight.flights.push(subFlight);
+        flight.flightsList.push(subFlight);
         console.log('-----------flight Details--------------');
         console.log(flight);
       }
-      flightsList.push(flight);
+      flightsDetails.push(flight);
     }
 
-    await flights.insertMany(flightsList);
+    await flights.insertMany(flightsDetails);
     res.status(201).send('Sucsess');
   } catch (e) {
     console.log(e);
