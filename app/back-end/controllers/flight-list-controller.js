@@ -2,7 +2,6 @@ import flights from '../models/flights.js';
 
 const getFlights = async (req, res) => {
   try {
-    console.log(req.body);
     const { source, destination, date } = req.body;
 
     const Tempflight = await flights.find({

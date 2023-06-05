@@ -1,5 +1,5 @@
 import express from 'express';
-import getFlights from '../controllers/flight-list-controller.js';
+import { getFlights } from '../controllers/flight-list-controller.js';
 
 const router = express.Router();
 
