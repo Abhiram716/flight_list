@@ -13,7 +13,7 @@ const flightSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  flights: [
+  flightsList: [
     {
       company: {
         type: String,

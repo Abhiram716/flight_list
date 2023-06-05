@@ -1,5 +1,32 @@
 import flights from '../models/flights.js';
 
-const getFlights = (res, req) => {};
+const getFlights = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { source, destination, date } = req.body;
 
-export default getFlights;
+    const Tempflight = await flights.find({
+      source: source,
+      destination: destination,
+      date: date,
+    });
+
+    const flightData = {};
+
+    Tempflight.forEach((flight) => {
+      flight.flightsList.forEach(({ company, price }) => {
+        flightData[company] = price;
+      });;
+    });
+
+    res.status(200).json(flightData);
+  } catch (error) {
+    console.error('Error fetching flights:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+  
+};
+
+
+
+export { getFlights };

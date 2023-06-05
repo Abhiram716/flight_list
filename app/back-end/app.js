@@ -28,8 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //form-urlencoded
 
-
-app.use('/flights_list',router)
+app.use('/flight',router)
 
 app.get('/', async (req, res) => {
   res.send("Hello world")
