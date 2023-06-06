@@ -1,6 +1,7 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import accountRouter from './routes/accounts-router.js';
 import router from './routes/flight-list-router.js';
 
 dotenv.config();

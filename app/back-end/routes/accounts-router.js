@@ -1,8 +1,8 @@
 import express from 'express';
-import { createAccount } from '../controllers/account-controller';
+import { createAccount } from '../controllers/account-controller.js';
 
 const accountRouter = express.Router();
 
-router.post('/', createAccount);
+accountRouter.post('/signup', createAccount);
 
 export default accountRouter;

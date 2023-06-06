@@ -1,11 +1,12 @@
-import accounts from '../models/accounts';
+import bcrypt from 'bcrypt';
+import accounts from '../models/accounts.js';
 
 const createAccount = async (req, res) => {
 	try {
     const { username, password } = req.body;
 
     // Check if the username already exists
-    const existingAccount = await Account.findOne({ username });
+    const existingAccount = await accounts.findOne({ username });
     if (existingAccount) {
       return res.status(400).json({ error: 'Username already exists' });
     }
@@ -14,7 +15,7 @@ const createAccount = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create a new account
-    const newAccount = new Account({
+    const newAccount = new accounts({
       username,
       hashedPassword,
     });

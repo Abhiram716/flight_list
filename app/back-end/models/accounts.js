@@ -7,7 +7,7 @@ const accounts = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  hasedPassword: {
+  hashedPassword: {
     type: String,
     required: true,
   },
