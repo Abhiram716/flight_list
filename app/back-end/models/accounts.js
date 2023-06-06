@@ -13,4 +13,4 @@ const accounts = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('accounts',accounts)
+export default mongoose.model('accounts', accounts);
