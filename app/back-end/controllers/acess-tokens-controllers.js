@@ -5,12 +5,12 @@ import accounts from '../models/accounts.js';
 const createAcessTokens = async (req, res) => {
   try {
 		const { username, password } = req.body;
-		console.log(typeof password);
+		// console.log(typeof password);
 
-		const passwordString = String(password);
+		// const passwordString = String(password);
     // Check if the account exists in the database
 		const account = await accounts.findOne({ username });
-		console.log(account);
+
 
     // If account not found, return error
     if (!account) {
@@ -19,9 +19,9 @@ const createAcessTokens = async (req, res) => {
 
     // Compare the provided password with the hashed password in the database
     const isPasswordValid = await bcrypt.compare(
-      passwordString,
+      password,
       account.hashedPassword,
-		);
+    );
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid password' });
     }
@@ -31,7 +31,7 @@ const createAcessTokens = async (req, res) => {
 
     // Generate the access token
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: null, // Set the token expiration time (e.g., 1 hour)
+      expiresIn: '365d', // Set the token expiration time (e.g., 1 hour)
     });
 
     // Return the access token to the client
