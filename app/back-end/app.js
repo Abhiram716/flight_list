@@ -1,8 +1,9 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import router from './routes/flight-list-router.js';
 import accountRouter from './routes/accounts-router.js';
+import authRouter from './routes/auth-router.js';
+import flightsRouter from './routes/flight-list-router.js';
 
 dotenv.config();
 
@@ -28,7 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // form-urlencoded
 
-app.use('/flights_list', router);
+app.use('/access-tokens',authRouter);
+
+app.use('/flights_list', flightsRouter);
 
 app.use('/accounts', accountRouter);
 

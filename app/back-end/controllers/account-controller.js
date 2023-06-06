@@ -37,22 +37,27 @@ const createFakeAccounts = async (req, res) => {
     for (let i = 0; i < 20; i++) {
       const fakeAcount = {
         username: faker.person.fullName(),
-        hashedPassword: await bcrypt.hash(
-          faker.internet.password({ length: 10 }),
-          10,
-        ),
+        hashedPassword: faker.internet.password({ length: 10 }),
       };
       fakeAcounts.push(fakeAcount);
     }
 
     await accounts.insertMany(fakeAcounts);
     res.status(201).send('Sucsess');
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
     res.send(e);
   }
-  
 };
 
-export { createAccount, createFakeAccounts };
+const deletAccounts = async (req, res) => {
+  try {
+    await accounts.deleteMany({}); // Delete all documents in the "flights" collection
+    res.status(200).json({ message: 'All documents deleted successfully.' });
+  } catch (e) {
+    console.log(e);
+    res.send(e);
+  }
+};
+
+export { createAccount, createFakeAccounts, deletAccounts };

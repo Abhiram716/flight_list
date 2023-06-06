@@ -5,12 +5,12 @@ import {
   deleteFlightLists
 } from '../controllers/flight-list-controller.js'
 
-const router = express.Router()
+const flightsRouter = express.Router()
 
-router.get('/', getFlights)
+flightsRouter.get('/', getFlights);
 
-router.get('/createFlightsList', createFlightsList)
+flightsRouter.get('/createFlightsList', createFlightsList);
 
-router.get('/deleteFlightLists', deleteFlightLists)
+flightsRouter.get('/deleteFlightLists', deleteFlightLists);
 
-export default router
+export default flightsRouter;
