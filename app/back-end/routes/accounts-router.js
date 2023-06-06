@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './flight-list-router';
+import { createAccount } from '../controllers/account-controller';
 
 const accountRouter = express.Router();
 
