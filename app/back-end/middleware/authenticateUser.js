@@ -17,7 +17,6 @@ const authenticateUser = async (req, res, next) => {
         error:
           'Invalid authorization header. Expected format is "Bearer <token>".',
       });
-		// res.send(e);
   }
 
   if (req.params.username && verifiedToken.username !== req.params.username) {
