@@ -4,12 +4,12 @@ import accounts from '../models/accounts.js';
 
 const createAcessTokens = async (req, res) => {
   try {
-		const { username, password } = req.body;
-		// console.log(typeof password);
+    const { username, password } = req.body;
+    // console.log(typeof password);
 
-		// const passwordString = String(password);
+    // const passwordString = String(password);
     // Check if the account exists in the database
-		const account = await accounts.findOne({ username });
+    const account = await accounts.findOne({ username });
 
 
     // If account not found, return error
