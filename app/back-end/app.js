@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import accountRouter from './routes/accounts-router.js';
 import router from './routes/flight-list-router.js';
+import authRouter from './routes/auth-router.js';
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/flight', router);
 
 app.use('/accounts', accountRouter);
+
+app.use('/access-tokens', authRouter);
 
 app.get('/', async (req, res) => {
   res.send('Hello world');
