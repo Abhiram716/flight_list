@@ -1,8 +1,8 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import accountRouter from './routes/accounts-router.js';
 import router from './routes/flight-list-router.js';
-
 
 dotenv.config();
 
@@ -28,9 +28,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //form-urlencoded
 
-app.use('/flight',router)
+app.use('/flight', router);
+
+app.use('/accounts', accountRouter);
 
 app.get('/', async (req, res) => {
-  res.send("Hello world")
+  res.send('Hello world');
 });
 app.listen(process.env.PORT | 8000);
