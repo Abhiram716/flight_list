@@ -5,10 +5,5 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "backend/app.js"
-    }
-  ]
+  "routes": [{ "src": "/backend/(.*)", "dest": "/backend/app.js" }]
 }
