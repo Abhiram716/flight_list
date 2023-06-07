@@ -4,6 +4,9 @@
   "description": "This Api gives the list flights and their prices from point a to point b",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
