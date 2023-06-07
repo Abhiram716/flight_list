@@ -7,10 +7,11 @@ const authenticateUser = async (req, res, next) => {
     return res.status(401).json({ error: 'Access token missing' });
   }
 
+  let verifiedToken = '';
   try {
     const token = authHeader.split(' ')[1];
-    const verifiedToken = jsonwebtoken.verify(token, process.env.JWT_SECRET);
-	} catch (e) {
+    verifiedToken = jsonwebtoken.verify(token, process.env.JWT_SECRET);
+  } catch (e) {
     return res
       .status(401)
       .json({

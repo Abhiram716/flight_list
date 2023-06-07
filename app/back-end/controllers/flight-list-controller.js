@@ -29,7 +29,7 @@ const createFlightDetails = async(req, res) => {
   try {
     const newFlightDetails = new flights(req.body);
     await newFlightDetails.save();
-     res.status(201).json({ message: 'Data created successfully' });
+    res.status(201).json({ message: 'Data created successfully' });
   } catch (error) {
     console.error('Error fetching flights:', error);
     res.status(500).json({ error: 'Internal Server Error' });

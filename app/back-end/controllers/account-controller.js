@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import accounts from '../models/accounts.js';
 
 const createAccount = async (req, res) => {
-	try {
+  try {
     const { username, password } = req.body;
 
     // Check if the username already exists
