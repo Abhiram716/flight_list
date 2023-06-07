@@ -9,8 +9,8 @@ const SignInForm = () => {
     <Box>
       <Box sx={{ width: 300, marginTop: 5, }}>
         <Stack spacing={2}>
-          <TextField id="outlined-basic" label="Username" variant="outlined" />
-          <TextField id="outlined-basic" label="Password" variant="outlined" />
+          <TextField id="username" label="Username" variant="outlined" />
+          <TextField id="password" label="Password" variant="outlined" />
           <Button variant="contained">Sign in</Button>
         </Stack>
       </Box>
