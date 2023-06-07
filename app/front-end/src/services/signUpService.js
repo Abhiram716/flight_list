@@ -1,0 +1,3 @@
+const signUpService = () => {};
+
+export { signUpService };
