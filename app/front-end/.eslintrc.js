@@ -95,23 +95,6 @@ module.exports = {
     ],
     "react/prop-types": "warn",
     semi: "warn",
-    "sort-imports": [
-      "warn",
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-      },
-    ],
-    "sort-keys": [
-      "warn",
-      "asc",
-      {
-        caseSensitive: true,
-        minKeys: 2,
-        natural: false,
-      },
-    ],
   },
   settings: {
     react: {

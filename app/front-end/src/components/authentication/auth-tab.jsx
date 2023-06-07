@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthTab = () => {
   const [value, setValue] = useState(0);
@@ -23,6 +23,7 @@ const AuthTab = () => {
         <Tab label="SignIn" />
         <Tab label="SignUp" />
       </Tabs>
+      <Outlet />
     </Box>
   );
 };

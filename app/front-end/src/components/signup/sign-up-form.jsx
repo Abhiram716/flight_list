@@ -7,7 +7,7 @@ import React from "react";
 const SignUpForm = () => {
   return (
     <Box>
-      <Box sx={{ width: 300 }}>
+      <Box sx={{ width: 300, marginTop: 5 }}>
         <Stack spacing={2}>
           <TextField id="outlined-basic" label="Username" variant="outlined" />
           <TextField id="outlined-basic" label="Password" variant="outlined" />

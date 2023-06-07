@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AuthPageLayout from "./components/authentication/auth-page-layout";
-// import SignIn from "./components/signin/sign-in-layout";
 
 function App() {
   return (
