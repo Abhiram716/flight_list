@@ -4,7 +4,7 @@ module.exports = {
     commonjs: true, // CommonJS global variables and CommonJS scoping.Allows require, exports and module.
     es6: true, // Enable all ECMAScript 6 features except for modules.
     jest: true, // Jest global variables like `it` etc.
-    node: true // Defines things like process.env when generating through node
+    node: true, // Defines things like process.env when generating through node
   },
   extends: [
     "eslint:recommended",
@@ -12,28 +12,28 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
+    "prettier",
   ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module" // Allows for the use of imports
+    sourceType: "module", // Allows for the use of imports
   },
   plugins: [
-    "import" // eslint-plugin-import plugin. https://www.npmjs.com/package/eslint-plugin-import
+    "import", // eslint-plugin-import plugin. https://www.npmjs.com/package/eslint-plugin-import
   ],
   root: true, // For configuration cascading.
   rules: {
-    "comma-dangle": ["warn", "never"],
     "eol-last": "error",
     "import/order": [
       "warn",
       {
         alphabetize: {
           caseInsensitive: true,
-          order: "asc"
+          order: "asc",
         },
         groups: [
           "builtin",
@@ -41,17 +41,17 @@ module.exports = {
           "index",
           "sibling",
           "parent",
-          "internal"
-        ]
-      }
+          "internal",
+        ],
+      },
     ],
     indent: ["error", 2],
     "jsx-quotes": ["warn", "prefer-double"],
     "max-len": [
       "error",
       {
-        code: 120
-      }
+        code: 120,
+      },
     ],
     "no-console": "warn",
     "no-duplicate-imports": "error",
@@ -61,48 +61,37 @@ module.exports = {
         paths: [
           {
             message: "Please use import foo from 'lodash-es/foo' instead.",
-            name: "lodash"
+            name: "lodash",
           },
           {
             message:
               "Avoid using chain since it is non tree-shakable. Try out flow instead.",
-            name: "lodash-es/chain"
+            name: "lodash-es/chain",
           },
           {
             importNames: ["chain"],
             message:
               "Avoid using chain since it is non tree-shakable. Try out flow instead.",
-            name: "lodash-es"
+            name: "lodash-es",
           },
           {
             message: "Please use import foo from 'lodash-es/foo' instead.",
-            name: "lodash-es"
-          }
+            name: "lodash-es",
+          },
         ],
-        patterns: ["lodash/**", "lodash/fp/**"]
-      }
+        patterns: ["lodash/**", "lodash/fp/**"],
+      },
     ],
     "no-unused-vars": "error",
-    "object-curly-spacing": ["warn", "always"],
-    quotes: ["error", "double"],
-    "react/jsx-curly-spacing": [
-      "warn",
-      {
-        allowMultiline: true,
-        children: {
-          when: "always"
-        },
-        spacing: {
-          objectLiterals: "always"
-        },
-        when: "always"
-      }
-    ],
+    "object-curly-spacing": "off",
+    quotes: ["warn", "double"],
+    "react/jsx-curly-spacing": "off",
+    
     "react/jsx-filename-extension": [
       "error",
       {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
-      }
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
     ],
     "react/prop-types": "warn",
     semi: "warn",
@@ -111,8 +100,8 @@ module.exports = {
       {
         ignoreCase: false,
         ignoreDeclarationSort: true,
-        ignoreMemberSort: false
-      }
+        ignoreMemberSort: false,
+      },
     ],
     "sort-keys": [
       "warn",
@@ -120,13 +109,13 @@ module.exports = {
       {
         caseSensitive: true,
         minKeys: 2,
-        natural: false
-      }
-    ]
+        natural: false,
+      },
+    ],
   },
   settings: {
     react: {
-      version: "detect" // Detect react version
-    }
-  }
+      version: "detect", // Detect react version
+    },
+  },
 };
