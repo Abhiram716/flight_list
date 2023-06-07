@@ -13,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/auth/signin" replace />} />
+          
           <Route path="/auth/*" element={<AuthPageLayout />} />
         </Routes>
       </Router>
