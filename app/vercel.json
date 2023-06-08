@@ -1,9 +1,10 @@
 {
+  "root":"backend",
   "builds": [
     {
       "src": "backend/app.js",
       "use": "@vercel/node"
     }
   ],
-  "routes": [{ "src": "/backend/(.*)", "dest": "/backend/app.js" }]
+  "routes": [{ "src": "/.*", "dest": "/app.js" }]
 }
