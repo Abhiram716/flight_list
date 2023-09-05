@@ -37,9 +37,15 @@ const getFlights = async (req, res) => {
 };
 
 const createFlightDetails = async (req, res) => {
-  const { source, destination, date } = req.body;
+  const { source, destination, date, flightsList } = req.body;
 
-  if (source === undefined || destination === undefined || date === undefined) {
+  if (
+    source === undefined ||
+    destination === undefined ||
+    date === undefined ||
+    !flightsList ||
+    flightsList.length === 0
+  ) {
     return res.status(400).json({ error: 'Missing required field.' });
   }
   try {
