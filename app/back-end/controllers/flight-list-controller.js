@@ -34,7 +34,18 @@ const getFlights = async (req, res) => {
 };
 
 const createFlightDetails = async (req, res) => {
+  const { source, destination, date } = req.body;
+
+  if (source === undefined || destination === undefined || date === undefined) {
+    return res.status(400).json({ error: 'Missing required field.' });
+  }
   try {
+    const existingFlight = await flights.findOne({ source, destination, date });
+
+    if (existingFlight) {
+      return res.status(409).json({ error: 'Flight already exists.' });
+    }
+
     const newFlightDetails = new flights(req.body);
     await newFlightDetails.save();
     res.status(201).json({ message: 'Data created successfully' });
