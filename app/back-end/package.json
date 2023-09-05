@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "start":"nodemon app.js"
   },
   "author": "Abhiram Kantipudi",
   "license": "ISC",
