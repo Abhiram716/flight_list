@@ -1,9 +1,8 @@
 import flights from '../models/flights.js';
 
 const getFlights = async (req, res) => {
+  const { source, destination, date } = req.body;
   try {
-    const { source, destination, date } = req.body;
-
     if (
       source === undefined ||
       destination === undefined ||
@@ -17,6 +16,10 @@ const getFlights = async (req, res) => {
       destination: destination,
       date: date,
     });
+
+    if (Tempflight.length === 0) {
+      return res.status(404).json({ error: 'No flights found.' });
+    }
 
     const flightData = {};
 
