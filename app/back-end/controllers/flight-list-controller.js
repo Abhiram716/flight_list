@@ -11,19 +11,19 @@ const getFlights = async (req, res) => {
       return res.status(400).json({ error: 'Missing required field.' });
     }
 
-    const Tempflight = await flights.find({
+    const matchingFlights = await flights.find({
       source: source,
       destination: destination,
       date: date,
     });
 
-    if (Tempflight.length === 0) {
+    if (matchingFlights.length === 0) {
       return res.status(404).json({ error: 'No flights found.' });
     }
 
     const flightData = {};
 
-    Tempflight.forEach((flight) => {
+    matchingFlights.forEach((flight) => {
       flight.flightsList.forEach(({ company, price }) => {
         flightData[company] = price;
       });

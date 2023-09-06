@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //form-urlencoded
 
-app.use('/flight', router);
+app.use('/flights', router);
 
 app.use('/accounts', accountRouter);
 
