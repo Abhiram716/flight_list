@@ -8,7 +8,7 @@ const createAccount = async (req, res) => {
     // Check if the username already exists
     const existingAccount = await accounts.findOne({ username });
     if (existingAccount) {
-      return res.status(400).json({ error: 'Username already exists' });
+      return res.status(409).json({ error: 'Username already exists' });
     }
 
     // Hash the password
