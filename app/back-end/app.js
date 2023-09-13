@@ -1,9 +1,11 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
+
 import accountRouter from './routes/accounts-router.js';
-import router from './routes/flight-list-router.js';
 import authRouter from './routes/auth-router.js';
+import router from './routes/flight-list-router.js';
 
 dotenv.config();
 
@@ -29,6 +31,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //form-urlencoded
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  }),
+);
 app.use('/flights', router);
 
 app.use('/accounts', accountRouter);
