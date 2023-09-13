@@ -1,23 +1,21 @@
 import React from 'react';
-import { Box, TextField, InputAdornment, Button } from '@mui/material';
+import { Box, TextField, InputAdornment } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 import { useFormik } from 'formik';
 
-import AuthServcie from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContextProvider';
 
 const Signup = () => {
+  const { signup, asyncStatus } = useAuth();
+
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
-    onSubmit: () => {
-      const authService = new AuthServcie();
-      const res = authService.signup(
-        formik.values.username,
-        formik.values.password,
-      );
-      // console.log(res);
+    onSubmit: (values) => {
+      signup(values.username, values.password);
     },
   });
 
@@ -64,9 +62,13 @@ const Signup = () => {
             ),
           }}
         />
-        <Button variant="contained" type="submit" sx={{ mt: 2 }}>
-          Submit
-        </Button>
+        <LoadingButton
+          loading={asyncStatus === 'pending' ? true : false}
+          variant="contained"
+          type="submit"
+        >
+          <span>Submit</span>
+        </LoadingButton>
       </Box>
     </form>
   );
