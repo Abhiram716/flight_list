@@ -3,14 +3,21 @@ import { Box, TextField, InputAdornment, Button } from '@mui/material';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 import { useFormik } from 'formik';
 
+import AuthServcie from '../../services/authService';
+
 const Signup = () => {
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
-    onSubmit: (values) => {
-      //submit logic
+    onSubmit: () => {
+      const authService = new AuthServcie();
+      const res = authService.signup(
+        formik.values.username,
+        formik.values.password,
+      );
+      // console.log(res);
     },
   });
 
