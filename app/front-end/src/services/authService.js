@@ -9,8 +9,7 @@ class AuthServcie {
       });
       return response;
     } catch (e) {
-      console.log(e.response);
-      return e;
+      throw e.response;
     }
   }
 }

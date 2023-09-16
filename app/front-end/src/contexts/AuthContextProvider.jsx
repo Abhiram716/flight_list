@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 
+import AuthService from '../services/authService';
 import AsyncOperationStatus from '../utils/AsyncOperationStatus';
-import AuthService from '../services/authService'; // Correct the import path
 
 const AuthContext = createContext();
 
@@ -16,12 +16,12 @@ const AuthContextProvider = ({ children }) => {
     const authService = new AuthService();
     try {
       setAsyncStatus(AsyncOperationStatus.pending);
-      const result = await authService.signup(username, password);
+      let responseMsg = await authService.signup(username, password);
       setAsyncStatus(AsyncOperationStatus.success);
-      console.log(result);
+      return responseMsg.data.message;
     } catch (e) {
       setAsyncStatus(AsyncOperationStatus.failure);
-      console.error(e);
+      return e.data.error;
     }
   }, []);
 
