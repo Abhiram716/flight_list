@@ -33,10 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: [
-      'http://localhost:3000',
-      'https://bright-travesseiro-4439e1.netlify.app',
-    ],
+    origin: ['http://localhost:3000', 'https://flight-list-client.netlify.app'],
   }),
 );
 app.use('/flights', router);
