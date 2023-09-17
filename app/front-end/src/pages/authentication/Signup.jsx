@@ -28,10 +28,28 @@ const Signup = () => {
       let res = await signup(values.username, values.password);
       setResponse(res);
     },
+    validate: (values) => {
+      const errors = {};
+      if (!values.username) {
+        errors.username = 'Required';
+      } else if (values.username.length < 2) {
+        errors.username = 'username must be of length greater than 2';
+      } else if (values.username.length > 15) {
+        errors.username = 'username must be of length less than 15';
+      } else {
+        errors.username = '';
+      }
+
+      if (!values.password) {
+        errors.password = 'Required';
+      }
+
+      return errors;
+    },
   });
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
         <Box
           sx={{
             display: 'flex',
@@ -49,6 +67,8 @@ const Signup = () => {
             value={formik.values.username}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -66,6 +86,8 @@ const Signup = () => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -74,7 +96,7 @@ const Signup = () => {
               ),
             }}
           />
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" disabled={!formik.isValid}>
             {asyncStatus === 'pending' ? (
               <CircularProgress
                 size={24}
