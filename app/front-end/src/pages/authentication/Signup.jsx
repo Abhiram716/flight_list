@@ -36,8 +36,6 @@ const Signup = () => {
         errors.username = 'username must be of length greater than 2';
       } else if (values.username.length > 15) {
         errors.username = 'username must be of length less than 15';
-      } else {
-        errors.username = '';
       }
 
       if (!values.password) {
