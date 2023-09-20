@@ -33,9 +33,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://flight-list-client.netlify.app'],
+    origin: function (origin, callback) {
+      if (origin === 'http://localhost:3000') {
+        callback(null, true);
+      } else if (
+        /^https:\/\/deploy-preview-\d+--light-list-client\.netlify\.app$/.test(
+          origin,
+        )
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
   }),
 );
+
 app.use('/flights', router);
 
 app.use('/accounts', accountRouter);
