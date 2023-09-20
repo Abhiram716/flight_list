@@ -12,6 +12,17 @@ class AuthServcie {
       throw e.response;
     }
   }
+  async signin(username, password) {
+    try {
+      const response = await apiClient.post('/access-tokens', {
+        username,
+        password,
+      });
+      return response.data.accessToken;
+    } catch (e) {
+      throw e.response;
+    }
+  }
 }
 
 export default AuthServcie;
