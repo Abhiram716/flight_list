@@ -25,8 +25,30 @@ const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
+  const signin = useCallback(async (username, password) => {
+    const authService = new AuthService();
+    try {
+      setAsyncStatus(AsyncOperationStatus.pending);
+      let accessToken = await authService.signin(username, password);
+      setAsyncStatus(AsyncOperationStatus.success);
+      setAccessToken(accessToken);
+    } catch (e) {
+      setAsyncStatus(AsyncOperationStatus.failure);
+      return e.data.error;
+    }
+  }, []);
+
+  const setAccessToken = (accessToken) => {
+    localStorage.setItem('accessToken', accessToken);
+  };
+  const logout = (accessToken) => {
+    localStorage.removeItem('accessToken');
+  };
+
   const contextValue = {
     signup,
+    signin,
+    logout,
     asyncStatus,
   };
 
