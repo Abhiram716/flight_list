@@ -31,23 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //form-urlencoded
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (origin === 'http://localhost:3000') {
-        callback(null, true);
-      } else if (
-        /^https:\/\/deploy-preview-\d+--flight-list-client\.netlify\.app.*/.test(
-          origin,
-        )
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  }),
-);
+app.use(cors({ origin: '*' }));
 
 app.use('/flights', router);
 
