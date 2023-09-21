@@ -37,7 +37,7 @@ app.use(
       if (origin === 'http://localhost:3000') {
         callback(null, true);
       } else if (
-        /^https:\/\/deploy-preview-\d+--flight-list-client\.netlify\.app$/.test(
+        /^https:\/\/deploy-preview-\d+--flight-list-client\.netlify\.app.*/.test(
           origin,
         )
       ) {
